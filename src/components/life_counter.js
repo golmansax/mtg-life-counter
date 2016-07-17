@@ -2,13 +2,13 @@ import React, { PropTypes } from 'react';
 import { View, Text } from 'react-native';
 import { Button } from 'native-base';
 
-export const LifeCounter = () => (
+export const LifeCounter = ({ lifeTotal, onLifeTotalChange }) => (
   <View>
-    <Text>{this.props.lifeTotal}</Text>
-    <Button bordered block onPress={this.props.onLifeTotalChange.bind(this, 1)}>
+    <Text>{lifeTotal}</Text>
+    <Button bordered block onPress={onLifeTotalChange.bind(this, 1)}>
       Increase
     </Button>
-    <Button bordered block onPress={this.props.onLifeTotalChange.bind(this, -1)}>
+    <Button bordered block onPress={onLifeTotalChange.bind(this, -1)}>
       Decrease
     </Button>
   </View>

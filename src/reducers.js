@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { UPDATE_LIFE, ME, YOU } from './constants';
+import { UPDATE_LIFE, RESET_LIFE, ME, YOU } from './constants';
 
 const initialLifeTotals = {
   [ME]: 20,
@@ -12,6 +12,9 @@ const lifeTotals = (state = initialLifeTotals, action) => {
       return Object.assign({}, state, {
         [action.player]: state[action.player] + action.amount,
       });
+
+    case RESET_LIFE:
+      return initialLifeTotals;
 
     default:
       return state;

@@ -4,24 +4,24 @@ import { Col, Grid } from 'react-native-easy-grid';
 import { LifeCounter } from './life_counter';
 import { ME, YOU } from '../constants';
 
-export const Display = () => (
+export const Display = ({ lifeTotals, onLifeTotalChange, onLifeTotalReset }) => (
   <Container>
     <Header>
       <Title>MTG Life Counter</Title>
     </Header>
     <Content>
-      <Button block>Reset life totals</Button>
+      <Button block onPress={onLifeTotalReset}>Reset life totals</Button>
       <Grid>
         <Col>
           <LifeCounter
-            lifeTotal={this.props.lifeTotals[ME]}
-            onLifeTotalChange={this.props.onLifeTotalChange.bind(this, ME)}
+            lifeTotal={lifeTotals[ME]}
+            onLifeTotalChange={onLifeTotalChange.bind(this, ME)}
           />
         </Col>
         <Col>
           <LifeCounter
-            lifeTotal={this.props.lifeTotals[YOU]}
-            onLifeTotalChange={this.props.onLifeTotalChange.bind(this, YOU)}
+            lifeTotal={lifeTotals[YOU]}
+            onLifeTotalChange={onLifeTotalChange.bind(this, YOU)}
           />
         </Col>
       </Grid>
@@ -35,4 +35,5 @@ Display.propTypes = {
     [YOU]: PropTypes.number.isRequired,
   }).isRequired,
   onLifeTotalChange: PropTypes.func.isRequired,
+  onLifeTotalReset: PropTypes.func.isRequired,
 };
