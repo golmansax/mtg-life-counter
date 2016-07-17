@@ -12,5 +12,5 @@ const mapDispatchToProps = (dispatch) => ({
 
 export const ConnectedDisplay = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Display);

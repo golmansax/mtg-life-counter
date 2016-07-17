@@ -1,10 +1,10 @@
 import React from 'react';
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import { ConnectedDisplay } from './containers/connected_display';
-import { lifeCounterApp } from './reducers'
+import { lifeCounterApp } from './reducers';
 
-const store = createStore(lifeCounterApp)
+const store = createStore(lifeCounterApp);
 
 export const LifeCounterApp = () => (
   <Provider store={store}>
