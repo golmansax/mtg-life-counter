@@ -1,12 +1,19 @@
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  Text,
-} from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { AppRegistry, Text } from 'react-native';
 import { Container, Content, Header, Title, Button } from 'native-base';
 import { Col, Row, Grid } from "react-native-easy-grid";
+import { LifeCounter } from './life_counter';
+import { ME, YOU } from '../constants';
 
-export class LifeCounterDisplay extends Component {
+export class Display extends Component {
+  static propTypes = {
+    lifeTotals: PropTypes.shape({
+      [ME]: PropTypes.number.isRequired,
+      [YOU]: PropTypes.number.isRequired,
+    }).isRequired,
+    onLifeTotalChange: PropTypes.func.isRequired,
+  };
+
   render() {
     return (
       <Container>
@@ -17,14 +24,16 @@ export class LifeCounterDisplay extends Component {
           <Button block>Reset life totals</Button>
           <Grid>
             <Col>
-              <Text>20</Text>
-              <Button bordered block>Increase</Button>
-              <Button bordered block>Decrease</Button>
+              <LifeCounter
+                lifeTotal={this.props.lifeTotals[ME]}
+                onLifeTotalChange={this.props.onLifeTotalChange.bind(this, ME)}
+              />
             </Col>
             <Col>
-              <Text>20</Text>
-              <Button bordered block>Increase</Button>
-              <Button bordered block>Decrease</Button>
+              <LifeCounter
+                lifeTotal={this.props.lifeTotals[YOU]}
+                onLifeTotalChange={this.props.onLifeTotalChange.bind(this, YOU)}
+              />
             </Col>
           </Grid>
         </Content>

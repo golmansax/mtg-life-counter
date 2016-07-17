@@ -1,14 +1,16 @@
 import { connect } from 'react-redux';
-import { LifeCounterDisplay } from '../components/display';
+import { Display } from '../components/display';
+import { updateLife } from '../actions';
 
 const mapStateToProps = (state) => ({
   lifeTotals: state.lifeTotals,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  onLifeTotalChange: (player, amount) => dispatch(updateLife(player, amount)),
 });
 
-export const ConnectedLifeCounterDisplay = connect(
+export const ConnectedDisplay = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(LifeCounterDisplay);
+)(Display);
